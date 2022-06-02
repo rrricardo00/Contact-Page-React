@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom'
 import Head from './Head'
 import styles from './Produtos.module.css'
 
+
+
 const Produtos = () => {
 
   const [produtos, setProdutos] = React.useState(null)
 
   React.useEffect(() => {
-    axios.get(process.env.URL)
+    axios.get('https://ranekapi.origamid.dev/json/api/produto')
       .then(res => {
         setProdutos(res.data)
         console.log(res.data)
