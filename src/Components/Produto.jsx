@@ -27,16 +27,18 @@ const Produto = () => {
     getProduct()
   }, [id])
 
-  if (!load) return <h3>Loading</h3> 
+  if (!load) return <div className='loading'></div>
   if (error) return <h3>Aconeceu um erro: {error}</h3>
   if (produto === null) return <h3>Loading</h3>
 
   return (
-    <section className='anime-left'>
-      <Head title={`Produto | ${produto.nome}`} content={`Página do produto ${produto.nome}`}/>
+    <section className={`${styles.produto} anime-left`}>
+      <Head title={`Produto | ${produto.nome}`} content={`Página do produto ${produto.nome}`} />
+      <div>
+        {produto.fotos.map(foto => <img key={foto.src} src={foto.src} alt={foto.titulo} />)}
+      </div>
       {load &&
-        <div className={`${styles.produto}`} >
-          {produto.fotos.map(foto => <img key={foto.src} src={foto.src} alt={foto.titulo} />)}
+        <div>
           <h1> {produto.nome}</h1>
           <span className={styles.preco}>R$ {produto.preco}</span>
           <p className={styles.descricao}>{produto.descricao}</p>
