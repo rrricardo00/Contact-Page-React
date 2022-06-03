@@ -14,7 +14,6 @@ const Produtos = () => {
     axios.get('https://ranekapi.origamid.dev/json/api/produto')
       .then(res => {
         setProdutos(res.data)
-        console.log(res.data)
       })
       .catch(error => {
         console.log(error)
